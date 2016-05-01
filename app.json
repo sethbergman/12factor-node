@@ -1,0 +1,7 @@
+{
+  "name": "12factor-node",
+  "description": "A 12-Factor Node.js app built with Express",
+  "repository": "https://github.com/sethbergman/12factor-node",
+  "logo": "http://12factor-node.stackriot.com/images/lang-logo.png",
+  "keywords": ["node", "express", "12-Factor"]
+}

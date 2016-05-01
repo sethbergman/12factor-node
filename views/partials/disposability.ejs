@@ -1,0 +1,17 @@
+<article>
+
+<h2 id="ix_disposability">IX. Disposability</h2>
+
+<h3 id="maximize_robustness_with_fast_startup_and_graceful_shutdown">Maximize robustness with fast startup and graceful shutdown</h3>
+
+<p><strong>The twelve-factor app’s <a href="./processes">processes</a> are <em>disposable</em>, meaning they can be started or stopped at a moment’s notice.</strong> This facilitates fast elastic scaling, rapid deployment of <a href="./codebase">code</a> or <a href="./config">config</a> changes, and robustness of production deploys.</p>
+
+<p>Processes should strive to <strong>minimize startup time</strong>. Ideally, a process takes a few seconds from the time the launch command is executed until the process is up and ready to receive requests or jobs. Short startup time provides more agility for the <a href="./build-release-run">release</a> process and scaling up; and it aids robustness, because the process manager can more easily move processes to new physical machines when warranted.</p>
+
+<p>Processes <strong>shut down gracefully when they receive a <a href="http://en.wikipedia.org/wiki/SIGTERM">SIGTERM</a></strong> signal from the process manager. For a web process, graceful shutdown is achieved by ceasing to listen on the service port (thereby refusing any new requests), allowing any current requests to finish, and then exiting. Implicit in this model is that HTTP requests are short (no more than a few seconds), or in the case of long polling, the client should seamlessly attempt to reconnect when the connection is lost.</p>
+
+<p>For a worker process, graceful shutdown is achieved by returning the current job to the work queue. For example, on <a href="http://www.rabbitmq.com/">RabbitMQ</a> the worker can send a <a href="http://www.rabbitmq.com/amqp-0-9-1-quickref.html#basic.nack"><code>NACK</code></a>; on <a href="http://kr.github.com/beanstalkd/">Beanstalkd</a>, the job is returned to the queue automatically whenever a worker disconnects. Lock-based systems such as <a href="https://github.com/collectiveidea/delayed_job#readme">Delayed Job</a> need to be sure to release their lock on the job record. Implicit in this model is that all jobs are <a href="http://en.wikipedia.org/wiki/Reentrant_%28subroutine%29">reentrant</a>, which typically is achieved by wrapping the results in a transaction, or making the operation <a href="http://en.wikipedia.org/wiki/Idempotence">idempotent</a>.</p>
+
+<p>Processes should also be <strong>robust against sudden death</strong>, in the case of a failure in the underlying hardware. While this is a much less common occurrence than a graceful shutdown with <code>SIGTERM</code>, it can still happen. A recommended approach is use of a robust queueing backend, such as Beanstalkd, that returns jobs to the queue when clients disconnect or time out. Either way, a twelve-factor app is architected to handle unexpected, non-graceful terminations. <a href="http://lwn.net/Articles/191059/">Crash-only design</a> takes this concept to its <a href="http://docs.couchdb.org/en/latest/intro/overview.html">logical conclusion</a>.</p>
+
+</article>
