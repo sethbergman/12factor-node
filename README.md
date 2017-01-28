@@ -1,4 +1,6 @@
 # 12factor-node
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/sethbergman/12factor-node.svg)](https://greenkeeper.io/)
 A 12-Factor Node.js app built with Express
 
 ## Running Locally
