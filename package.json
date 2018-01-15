@@ -1,18 +1,18 @@
 {
   "name": "12factor-node",
   "author": "Seth Bergman",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A 12-Factor Node.js app built with Express",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index"
   },
   "dependencies": {
-    "ejs": "2.3.3",
-    "express": "4.16.0"
+    "ejs": "^2.5.5",
+    "express": "^4.16.0"
   },
   "engines": {
-    "node": "5.8.0"
+    "node": "8.9.4"
   },
   "repository": {
     "type": "git",
@@ -23,5 +23,5 @@
     "dokku",
     "express"
   ],
-  "license": "MIT"
+  "license": "UNLICENSED"
 }
