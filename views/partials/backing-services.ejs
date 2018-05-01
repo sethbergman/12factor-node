@@ -12,7 +12,7 @@
 
 <p>Each distinct backing service is a <em>resource</em>. For example, a MySQL database is a resource; two MySQL databases (used for sharding at the application layer) qualify as two distinct resources. The twelve-factor app treats these databases as <em>attached resources</em>, which indicates their loose coupling to the deploy they are attached to.</p>
 
-<p><img alt='A production deploy attached to four backing services.' class='full' src='http://12factor.stackriot.com/images/attached-resources.png' /></p>
+<p><img alt='A production deploy attached to four backing services.' class='full' src='.././assets/images/attached-resources.png' /></p>
 
 <p>Resources can be attached and detached to deploys at will. For example, if the app’s database is misbehaving due to a hardware issue, the app’s administrator might spin up a new database server restored from a recent backup. The current production database could be detached, and the new database attached – all without any code changes.</p>
 
