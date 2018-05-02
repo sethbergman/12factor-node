@@ -6,7 +6,8 @@
   "main": "server.js",
   "scripts": {
     "start": "node server",
-    "test": "mocha --reporter spec"
+    "mocha": "mocha --reporter spec",
+    "test": "sh test/index.test.sh"
   },
   "dependencies": {
     "ejs": "^2.5.5",
