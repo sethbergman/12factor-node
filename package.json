@@ -1,15 +1,18 @@
 {
   "name": "12factor-node",
   "author": "Seth Bergman",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A 12-Factor Node.js app built with Express",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "start": "node index"
+    "start": "node server",
+    "test": "mocha --reporter spec"
   },
   "dependencies": {
     "ejs": "^2.5.5",
-    "express": "^4.16.0"
+    "errorhandler": "^1.5.0",
+    "express": "^4.16.0",
+    "path": "^0.12.7"
   },
   "engines": {
     "node": ">=8.11.1",
@@ -19,10 +22,11 @@
     "type": "git",
     "url": "https://github.com/sethbergman/12factor-node"
   },
-  "keywords": [
-    "node",
-    "dokku",
-    "express"
-  ],
-  "license": "UNLICENSED"
+  "keywords": ["node", "dokku", "express"],
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^5.1.1",
+    "supertest": "^3.0.0"
+  }
 }

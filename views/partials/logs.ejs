@@ -1,25 +1,44 @@
 <article>
 
-<h2 id="xi_logs">XI. Logs</h2>
+    <h2 id="xi_logs">XI. Logs</h2>
 
-<h3 id="treat_logs_as_event_streams">Treat logs as event streams</h3>
+    <h3 id="treat_logs_as_event_streams">Treat logs as event streams</h3>
 
-<p><em>Logs</em> provide visibility into the behavior of a running app. In server-based environments they are commonly written to a file on disk (a “logfile”); but this is only an output format.</p>
+    <p>
+        <em>Logs</em> provide visibility into the behavior of a running app. In server-based environments they are commonly written
+        to a file on disk (a “logfile”); but this is only an output format.</p>
 
-<p>Logs are the <a href="http://adam.heroku.com/past/2011/4/1/logs_are_streams_not_files/">stream</a> of aggregated, time-ordered events collected from the output streams of all running processes and backing services. Logs in their raw form are typically a text format with one event per line (though backtraces from exceptions may span multiple lines). Logs have no fixed beginning or end, but flow continuously as long as the app is operating.</p>
+    <p>Logs are the
+        <a href="http://adam.heroku.com/past/2011/4/1/logs_are_streams_not_files/" target="_blank">stream</a> of aggregated, time-ordered events collected from the output streams of all running processes and backing
+        services. Logs in their raw form are typically a text format with one event per line (though backtraces from exceptions
+        may span multiple lines). Logs have no fixed beginning or end, but flow continuously as long as the app is operating.</p>
 
-<p><strong>A twelve-factor app never concerns itself with routing or storage of its output stream.</strong> It should not attempt to write to or manage logfiles. Instead, each running process writes its event stream, unbuffered, to <code>stdout</code>. During local development, the developer will view this stream in the foreground of their terminal to observe the app’s behavior.</p>
+    <p>
+        <strong>A twelve-factor app never concerns itself with routing or storage of its output stream.</strong> It should not attempt
+        to write to or manage logfiles. Instead, each running process writes its event stream, unbuffered, to
+        <code>stdout</code>. During local development, the developer will view this stream in the foreground of their terminal
+        to observe the app’s behavior.</p>
 
-<p>In staging or production deploys, each process’ stream will be captured by the execution environment, collated together with all other streams from the app, and routed to one or more final destinations for viewing and long-term archival. These archival destinations are not visible to or configurable by the app, and instead are completely managed by the execution environment. Open-source log routers (such as <a href="https://github.com/heroku/logplex">Logplex</a> and <a href="https://github.com/fluent/fluentd">Fluent</a>) are available for this purpose.</p>
+    <p>In staging or production deploys, each process’ stream will be captured by the execution environment, collated together
+        with all other streams from the app, and routed to one or more final destinations for viewing and long-term archival.
+        These archival destinations are not visible to or configurable by the app, and instead are completely managed by
+        the execution environment. Open-source log routers (such as
+        <a href="https://github.com/heroku/logplex" target="_blank">Logplex</a> and
+        <a href="https://github.com/fluent/fluentd" target="_blank">Fluent</a>) are available for this purpose.</p>
 
-<p>The event stream for an app can be routed to a file, or watched via realtime tail in a terminal. Most significantly, the stream can be sent to a log indexing and analysis system such as <a href="http://www.splunk.com/">Splunk</a>, or a general-purpose data warehousing system such as <a href="http://hive.apache.org/">Hadoop/Hive</a>. These systems allow for great power and flexibility for introspecting an app’s behavior over time, including:</p>
+    <p>The event stream for an app can be routed to a file, or watched via realtime tail in a terminal. Most significantly,
+        the stream can be sent to a log indexing and analysis system such as
+        <a href="http://www.splunk.com/" target="_blank">Splunk</a>, or a general-purpose data warehousing system such as
+        <a href="http://hive.apache.org/" target="_blank">Hadoop/Hive</a>. These systems allow for great power and flexibility for introspecting an app’s behavior over time,
+        including:</p>
 
-<ul>
-<li>Finding specific events in the past.</li>
+    <ul>
+        <li>Finding specific events in the past.</li>
 
-<li>Large-scale graphing of trends (such as requests per minute).</li>
+        <li>Large-scale graphing of trends (such as requests per minute).</li>
 
-<li>Active alerting according to user-defined heuristics (such as an alert when the quantity of errors per minute exceeds a certain threshold).</li>
-</ul>
+        <li>Active alerting according to user-defined heuristics (such as an alert when the quantity of errors per minute exceeds
+            a certain threshold).</li>
+    </ul>
 
 </article>

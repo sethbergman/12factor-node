@@ -1,15 +1,41 @@
 <article>
-<h2 id="ii_dependencies">II. Dependencies</h2>
+    <h2 id="ii_dependencies">II. Dependencies</h2>
 
-<h3 id="explicitly_declare_and_isolate_dependencies">Explicitly declare and isolate dependencies</h3>
+    <h3 id="explicitly_declare_and_isolate_dependencies">Explicitly declare and isolate dependencies</h3>
 
-<p>Most programming languages offer a packaging system for distributing support libraries, such as <a href="http://www.cpan.org/">CPAN</a> for Perl or <a href="http://rubygems.org/">Rubygems</a> for Ruby. Libraries installed through a packaging system can be installed system-wide (known as “site packages”) or scoped into the directory containing the app (known as “vendoring” or “bundling”).</p>
+    <p>Most programming languages offer a packaging system for distributing support libraries, such as
+        <a href="http://www.cpan.org/" target="_blank">CPAN</a> for Perl or
+        <a href="http://rubygems.org/" target="_blank">Rubygems</a> for Ruby. Libraries installed through a packaging system can be installed system-wide (known as “site
+        packages”) or scoped into the directory containing the app (known as “vendoring” or “bundling”).</p>
 
-<p><strong>A twelve-factor app never relies on implicit existence of system-wide packages.</strong> It declares all dependencies, completely and exactly, via a <em>dependency declaration</em> manifest. Furthermore, it uses a <em>dependency isolation</em> tool during execution to ensure that no implicit dependencies “leak in” from the surrounding system. The full and explicit dependency specification is applied uniformly to both production and development.</p>
+    <p>
+        <strong>A twelve-factor app never relies on implicit existence of system-wide packages.</strong> It declares all dependencies,
+        completely and exactly, via a
+        <em>dependency declaration</em> manifest. Furthermore, it uses a
+        <em>dependency isolation</em> tool during execution to ensure that no implicit dependencies “leak in” from the surrounding
+        system. The full and explicit dependency specification is applied uniformly to both production and development.</p>
 
-<p>For example, <a href="http://gembundler.com/">Gem Bundler</a> for Ruby offers the <code>Gemfile</code> manifest format for dependency declaration and <code>bundle exec</code> for dependency isolation. In Python there are two separate tools for these steps – <a href="http://www.pip-installer.org/en/latest/">Pip</a> is used for declaration and <a href="http://www.virtualenv.org/en/latest/">Virtualenv</a> for isolation. Even C has <a href="http://www.gnu.org/s/autoconf/">Autoconf</a> for dependency declaration, and static linking can provide dependency isolation. No matter what the toolchain, dependency declaration and isolation must always be used together – only one or the other is not sufficient to satisfy twelve-factor.</p>
+    <p>For example,
+        <a href="http://gembundler.com/" target="_blank">Gem Bundler</a> for Ruby offers the
+        <code>Gemfile</code> manifest format for dependency declaration and
+        <code>bundle exec</code> for dependency isolation. In Python there are two separate tools for these steps –
+        <a href="http://www.pip-installer.org/en/latest/" target="_blank">Pip</a> is used for declaration and
+        <a href="http://www.virtualenv.org/en/latest/" target="_blank">Virtualenv</a> for isolation. Even C has
+        <a href="http://www.gnu.org/s/autoconf/" target="_blank">Autoconf</a> for dependency declaration, and static linking can provide dependency isolation. No matter what the
+        toolchain, dependency declaration and isolation must always be used together – only one or the other is not sufficient
+        to satisfy twelve-factor.</p>
 
-<p>One benefit of explicit dependency declaration is that it simplifies setup for developers new to the app. The new developer can check out the app’s codebase onto their development machine, requiring only the language runtime and dependency manager installed as prerequisites. They will be able to set up everything needed to run the app’s code with a deterministic <em>build command</em>. For example, the build command for Ruby/Bundler is <code>bundle install</code>, while for Clojure/<a href="https://github.com/technomancy/leiningen#readme">Leiningen</a> it is <code>lein deps</code>.</p>
+    <p>One benefit of explicit dependency declaration is that it simplifies setup for developers new to the app. The new developer
+        can check out the app’s codebase onto their development machine, requiring only the language runtime and dependency
+        manager installed as prerequisites. They will be able to set up everything needed to run the app’s code with a deterministic
+        <em>build command</em>. For example, the build command for Ruby/Bundler is
+        <code>bundle install</code>, while for Clojure/
+        <a href="https://github.com/technomancy/leiningen#readme" target="_blank">Leiningen</a> it is
+        <code>lein deps</code>.</p>
 
-<p>Twelve-factor apps also do not rely on the implicit existence of any system tools. Examples include shelling out to ImageMagick or <code>curl</code>. While these tools may exist on many or even most systems, there is no guarantee that they will exist on all systems where the app may run in the future, or whether the version found on a future system will be compatible with the app. If the app needs to shell out to a system tool, that tool should be vendored into the app.</p>
+    <p>Twelve-factor apps also do not rely on the implicit existence of any system tools. Examples include shelling out to ImageMagick
+        or
+        <code>curl</code>. While these tools may exist on many or even most systems, there is no guarantee that they will exist
+        on all systems where the app may run in the future, or whether the version found on a future system will be compatible
+        with the app. If the app needs to shell out to a system tool, that tool should be vendored into the app.</p>
 </article>
