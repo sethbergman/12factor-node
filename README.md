@@ -4,7 +4,7 @@ The 12 Factor app written in Node.js, EJS and Express
 
 ---
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/sethbergman/12factor-node.svg)](https://greenkeeper.io/)[![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com) [![Build Status](https://travis-ci.org/sethbergman/12factor-node.svg?branch=master)](https://travis-ci.org/sethbergman/12factor-node)
+[![Greenkeeper badge](https://badges.greenkeeper.io/sethbergman/12factor-node.svg)](https://greenkeeper.io/) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com) [![Build Status](https://travis-ci.org/sethbergman/12factor-node.svg?branch=master)](https://travis-ci.org/sethbergman/12factor-node)
 
 ### Setup
 
