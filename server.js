@@ -50,7 +50,7 @@ app.get('/admin-processes', (req, res) => {
 app.use(errorHandler())
 
 const server = app.listen(process.env.PORT || 5000, () => {
-  console.log('Server running at http://localhost:' + server.address().port)
+  console.log('Server running at http://0.0.0.0:' + server.address().port)
 })
 
 module.exports = server
